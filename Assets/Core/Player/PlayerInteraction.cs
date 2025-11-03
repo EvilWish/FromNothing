@@ -46,7 +46,7 @@ public class PlayerInteraction : MonoBehaviour
             last = current;
         }
 
-        string activePrompt = null;
+        string activePrompt = current?.GetInteractionPrompt(this);
 
         if (!string.IsNullOrWhiteSpace(activePrompt)) ShowInteractionPanel(activePrompt);
         else HideInteractionPanel();
