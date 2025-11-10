@@ -16,6 +16,13 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private LayerMask interactableLayerMask;
     #endregion
 
+    #region BuildingSystem
+    [Header("Building System")]
+    [SerializeField] private PlacementSystem placementSystem;
+    [SerializeField] private LayerMask placementLayerMask;
+    [SerializeField] private Vector3 lastPosition;
+    #endregion
+
     #region UI References
     [Header("UI")]
     [SerializeField] private GameObject interactionPanel;
@@ -89,6 +96,16 @@ public class PlayerInteraction : MonoBehaviour
     #endregion
 
     #region Helper Methods
+    public Vector3 GetSelectedMapPosition()
+    {
+        Ray ray = new(cam.transform.position, cam.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, interactionDistance, placementLayerMask))
+        {
+            lastPosition = hitInfo.point;
+        }
+        return lastPosition;
+    }
+
     public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
     #endregion
 }

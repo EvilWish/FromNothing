@@ -15,7 +15,7 @@ public class ResourceInteraction : MonoBehaviour, IInteractable
     public bool CanInteract(PlayerInteraction ctx)
     {
         // TODO: Tool Check
-        return InventoryManager.Instance.HasSpace();
+        return true;
     }
 
     public string GetInteractionPrompt(PlayerInteraction ctx)
@@ -27,7 +27,7 @@ public class ResourceInteraction : MonoBehaviour, IInteractable
     {
         if (interactionData.resourceHealth > 0)
         {
-            InventoryManager.Instance.AddItemToInventory(interactionData.resItem, 1);
+            InventoryManager.Instance.AddItem(interactionData.resItem, 1);
             interactionData.resourceHealth--;
         }
         else

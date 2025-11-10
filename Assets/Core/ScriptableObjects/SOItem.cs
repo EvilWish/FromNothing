@@ -10,7 +10,8 @@ public class SOItem : ScriptableObject
     public ItemType itemType;
 
     [Header("Item Stacking")]
-    [Range(1, 64)] public float maxItemStackSize;
+    public bool canItemStack;
+    [Range(1, 64)] public int maxItemStackSize;
 
     [Header("Item Weight")]
     [Range(0f, 32f)] public float itemWeight;
@@ -19,4 +20,9 @@ public class SOItem : ScriptableObject
     public Sprite itemUIIcon;
     public bool useGlobalItemDropPrefab;
     public GameObject itemPrefab;
+
+    [Header("Building")]
+    public GameObject buildingPrefab;
+    public Vector2Int buildingSize;
+
 }
